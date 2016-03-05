@@ -1,4 +1,4 @@
-package com.thahaseen.popularmovies.entities;
+package com.thahaseen.popularmovies.data.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;

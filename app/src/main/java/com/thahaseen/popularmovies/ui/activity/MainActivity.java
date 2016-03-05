@@ -1,7 +1,7 @@
-package com.thahaseen.popularmovies.activity;
+package com.thahaseen.popularmovies.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.thahaseen.popularmovies.R;
 

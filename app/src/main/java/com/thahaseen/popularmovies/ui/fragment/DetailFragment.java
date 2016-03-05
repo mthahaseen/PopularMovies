@@ -1,4 +1,4 @@
-package com.thahaseen.popularmovies.fragment;
+package com.thahaseen.popularmovies.ui.fragment;
 
 /**
  * Created by Thahaseen on 3/2/2016.
