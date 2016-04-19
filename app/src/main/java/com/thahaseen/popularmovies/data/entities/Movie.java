@@ -14,7 +14,9 @@ public class Movie implements Parcelable {
     private String poster_path;
     private String backdrop_path;
     private String title;
-    private double voteAverage;
+    private String original_title;
+    private String original_language;
+    private double vote_average;
 
     public Movie(){}
 
@@ -25,7 +27,9 @@ public class Movie implements Parcelable {
         poster_path = in.readString();
         backdrop_path = in.readString();
         title = in.readString();
-        voteAverage = in.readDouble();
+        original_title = in.readString();
+        original_language = in.readString();
+        vote_average = in.readDouble();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -52,7 +56,9 @@ public class Movie implements Parcelable {
         parcel.writeString(poster_path);
         parcel.writeString(backdrop_path);
         parcel.writeString(title);
-        parcel.writeDouble(voteAverage);
+        parcel.writeString(original_title);
+        parcel.writeString(original_language);
+        parcel.writeDouble(vote_average);
     }
 
     public String getId() {
@@ -103,11 +109,27 @@ public class Movie implements Parcelable {
         this.title = title;
     }
 
-    public double getVoteAverage() {
-        return voteAverage;
+    public String getOriginal_title() {
+        return original_title;
     }
 
-    public void setVoteAverage(double voteAverage) {
-        this.voteAverage = voteAverage;
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public String getOriginal_language() {
+        return original_language;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
     }
 }
