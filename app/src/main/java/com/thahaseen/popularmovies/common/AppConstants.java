@@ -5,6 +5,7 @@ package com.thahaseen.popularmovies.common;
  */
 
 public final class AppConstants {
+
     public static final String API_KEY = "< YOUR API KEY HERE >";
     public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w185";
     public static final String BASE_IMAGE_BACK_DROP_URL = "http://image.tmdb.org/t/p/w342";

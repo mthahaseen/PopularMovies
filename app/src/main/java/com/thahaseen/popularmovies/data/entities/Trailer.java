@@ -10,12 +10,12 @@ public class Trailer implements Parcelable {
 
     public Trailer(){}
 
-    String trailerURL;
-    String trailerName;
+    String key;
+    String name;
 
     protected Trailer(Parcel in) {
-        trailerURL = in.readString();
-        trailerName = in.readString();
+        key = in.readString();
+        name = in.readString();
     }
 
     public static final Creator<Trailer> CREATOR = new Creator<Trailer>() {
@@ -36,23 +36,23 @@ public class Trailer implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(trailerURL);
-        parcel.writeString(trailerName);
+        parcel.writeString(key);
+        parcel.writeString(name);
     }
 
     public String getTrailerURL() {
-        return trailerURL;
+        return key;
     }
 
     public void setTrailerURL(String trailerURL) {
-        this.trailerURL = trailerURL;
+        this.key = trailerURL;
     }
 
     public String getTrailerName() {
-        return trailerName;
+        return name;
     }
 
     public void setTrailerName(String trailerName) {
-        this.trailerName = trailerName;
+        this.name = trailerName;
     }
 }
