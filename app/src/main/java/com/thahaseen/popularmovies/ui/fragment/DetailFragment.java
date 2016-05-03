@@ -21,7 +21,6 @@ import com.thahaseen.popularmovies.common.AppConstants;
 import com.thahaseen.popularmovies.common.ConnectionDetector;
 import com.thahaseen.popularmovies.data.entities.Movie;
 import com.thahaseen.popularmovies.data.entities.Trailer;
-import com.thahaseen.popularmovies.ui.adapter.MovieTrailerAdapter;
 
 import java.util.ArrayList;
 
@@ -35,15 +34,11 @@ public class DetailFragment extends Fragment{
 
     @Bind(R.id.imgMovieImage) ImageView imgMovieBackDrop;
     @Bind(R.id.txtMovieTitle) TextView txtMovieTitle;
-    @Bind(R.id.txtMovieRating) TextView txtMovieRating;
     @Bind(R.id.DetailViewPager) ViewPager detailViewPager;
     @Bind(R.id.detail_tab_layout) TabLayout tabLayout;
     ConnectionDetector connectionDetector;
-    private MovieTrailerAdapter movieTrailerAdapter;
-    private MovieTrailerAdapter.TrailerOnClickHandler trailerOnClickHandler;
     boolean multiPane = false;
     private Movie movie;
-    private ArrayList<Trailer> lstTrailer = new ArrayList<>();
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -69,7 +64,6 @@ public class DetailFragment extends Fragment{
                 .load(AppConstants.BASE_IMAGE_BACK_DROP_URL + movie.getBackdrop_path())
                 .into(imgMovieBackDrop);
         txtMovieTitle.setText(movie.getTitle());
-        txtMovieRating.setText(Double.toString(movie.getVote_average()));
         tabLayout.addTab(tabLayout.newTab().setText(AppConstants.TAB_SUMMARY));
         tabLayout.addTab(tabLayout.newTab().setText(AppConstants.TAB_TRAILER));
         tabLayout.addTab(tabLayout.newTab().setText(AppConstants.TAB_REVIEWS));
@@ -78,21 +72,16 @@ public class DetailFragment extends Fragment{
         tabLayout.setTabTextColors(getResources().getColor(android.R.color.white), getResources().getColor(android.R.color.white));
         PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
         detailViewPager.setAdapter(adapter);
+        detailViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 detailViewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
+            public void onTabUnselected(TabLayout.Tab tab) {}
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
         return view;
     }
@@ -121,7 +110,6 @@ public class DetailFragment extends Fragment{
 
         @Override
         public Fragment getItem(int position) {
-
             switch (position) {
                 case 0:
                     SummaryFragment tab1 = new SummaryFragment();

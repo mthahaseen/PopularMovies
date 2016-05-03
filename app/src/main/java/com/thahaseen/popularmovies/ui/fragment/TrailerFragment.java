@@ -1,10 +1,11 @@
 package com.thahaseen.popularmovies.ui.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,13 +39,12 @@ import butterknife.ButterKnife;
 /**
  * Created by Thahaseen on 4/19/2016.
  */
-public class TrailerFragment extends Fragment {
+public class TrailerFragment extends Fragment implements MovieTrailerAdapter.TrailerOnClickHandler{
 
     @Bind(R.id.recycler_view_trailers) RecyclerView recycler_view_trailers;
     MovieTrailerAdapter movieTrailerAdapter;
     ArrayList<Trailer> lstTrailer = new ArrayList<>();
     ConnectionDetector connectionDetector;
-    MovieTrailerAdapter.TrailerOnClickHandler trailerOnClickHandler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +61,6 @@ public class TrailerFragment extends Fragment {
 
     public void getMovieTrailers(String movieID){
         String URL_FEED =  AppConstants.API_BASE_URL + movieID + "/videos?api_key="+AppConstants.API_KEY;
-        Log.i("Trailer_API", URL_FEED);
         JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET, URL_FEED,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -92,7 +91,15 @@ public class TrailerFragment extends Fragment {
     public void populateRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recycler_view_trailers.setLayoutManager(linearLayoutManager);
-        movieTrailerAdapter = new MovieTrailerAdapter(getActivity(), lstTrailer, trailerOnClickHandler);
+        movieTrailerAdapter = new MovieTrailerAdapter(getActivity(), lstTrailer, this);
         recycler_view_trailers.setAdapter(movieTrailerAdapter);
+    }
+
+    @Override
+    public void onClick(Trailer trailer) {
+        String url = AppConstants.YOUTUBE_WEB_BASE_URL + trailer.getTrailerURL();
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }

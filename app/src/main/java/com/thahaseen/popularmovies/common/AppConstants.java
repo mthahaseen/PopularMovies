@@ -22,4 +22,6 @@ public final class AppConstants {
     public static final String TAB_TRAILER = "Trailer";
     public static final String TAB_REVIEWS = "Reviews";
 
+    public static final int VERTICAL_ITEM_SPACE = 20;
+
 }

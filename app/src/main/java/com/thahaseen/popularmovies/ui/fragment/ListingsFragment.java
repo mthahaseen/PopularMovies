@@ -76,7 +76,7 @@ public class ListingsFragment extends Fragment {
                 startActivity(intent);
             }
         };
-        movieList = new ArrayList<Movie>();
+        movieList = new ArrayList<>();
         if (savedInstanceState != null && savedInstanceState.containsKey(AppConstants.MOVIE_DATA)) {
             movieList = savedInstanceState.getParcelableArrayList(AppConstants.MOVIE_DATA);
             populateRecyclerView();
@@ -119,6 +119,10 @@ public class ListingsFragment extends Fragment {
                 }else {
                     Toast.makeText(getActivity(),"Trouble connecting to network",Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.action_favorite:
+                movieList = databaseHandler.getFavoriteMovieList();
+                populateRecyclerView();
                 break;
         }
         return super.onOptionsItemSelected(item);

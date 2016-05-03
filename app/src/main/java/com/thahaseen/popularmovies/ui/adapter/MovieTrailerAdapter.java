@@ -44,7 +44,7 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
     public void onBindViewHolder(TrailerViewHolder holder, int i) {
         Trailer rowItem = itemList.get(i);
         Picasso.with(context)
-                .load(AppConstants.BASE_IMAGE_URL + rowItem.getTrailerURL())
+                .load(AppConstants.YOUTUBE_THUMBNAIL_BASE_URL + rowItem.getTrailerURL()+"/default.jpg")
                 .into(holder.imgVideoThumbnail);
         holder.txtVideoName.setText(itemList.get(i).getTrailerName());
     }
@@ -55,8 +55,9 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
     }
 
     public interface TrailerOnClickHandler {
-        void onClick(TrailerViewHolder trailerViewHolder, Trailer trailer);
+        void onClick(Trailer trailer);
     }
+
     public class TrailerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @Bind(R.id.imgVideoThumbnail) ImageView imgVideoThumbnail;
@@ -71,7 +72,7 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
         @Override
         public void onClick(View v){
             Trailer trailer = itemList.get(getAdapterPosition());
-            trailerOnClickHandler.onClick(this, trailer);
+            trailerOnClickHandler.onClick(trailer);
         }
     }
 }
