@@ -22,9 +22,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"/>
 
-        <fragment
-            android:id="@+id/fragment_details"
-            android:name="com.thahaseen.popularmovies.ui.fragment.DetailFragment"
+        <FrameLayout
+            android:id="@+id/fragment_content"
+            android:layout_above="@+id/llLowerAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"/>

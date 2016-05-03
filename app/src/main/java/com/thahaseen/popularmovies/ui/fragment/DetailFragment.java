@@ -37,18 +37,11 @@ public class DetailFragment extends Fragment{
     @Bind(R.id.DetailViewPager) ViewPager detailViewPager;
     @Bind(R.id.detail_tab_layout) TabLayout tabLayout;
     ConnectionDetector connectionDetector;
-    boolean multiPane = false;
     private Movie movie;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //setHasOptionsMenu(true);
-        /*Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        if (getActivity().findViewById(R.id.llMultipane) != null) {
-            multiPane = true;
-            toolbar.setTitle(movie.getOriginal_title());
-        }*/
         /*if (!twoPane)
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(model.getOriginalTitle());*/
     }

@@ -6,9 +6,8 @@
     android:orientation="vertical"
     tools:context=".ui.activity.DetailActivity">
     <include layout="@layout/app_toolbar"/>
-    <fragment
+    <FrameLayout
         android:id="@+id/fragment_details"
-        android:name="com.thahaseen.popularmovies.ui.fragment.DetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

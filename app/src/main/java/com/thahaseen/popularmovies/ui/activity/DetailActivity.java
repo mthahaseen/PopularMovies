@@ -1,5 +1,6 @@
 package com.thahaseen.popularmovies.ui.activity;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.thahaseen.popularmovies.R;
+import com.thahaseen.popularmovies.ui.fragment.DetailFragment;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -17,6 +19,10 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        DetailFragment detailFragment = new DetailFragment();
+        fragmentTransaction.add(R.id.fragment_details, detailFragment);
+        fragmentTransaction.commit();
     }
 
     @Override

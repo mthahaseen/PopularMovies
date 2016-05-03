@@ -3,6 +3,7 @@ package com.thahaseen.popularmovies.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,11 +55,15 @@ public class ListingsFragment extends Fragment {
     private GridLayoutManager gridLayoutManager;
     private MovieAdapter movieAdapter;
     private MovieAdapter.MovieOnClickHandler movieOnClickHandler;
+    private boolean multiPane = false;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
+        if (getActivity().findViewById(R.id.llMultipane) != null) {
+            multiPane = true;
+        }
     }
 
     @Override
@@ -71,9 +76,16 @@ public class ListingsFragment extends Fragment {
         movieOnClickHandler = new MovieAdapter.MovieOnClickHandler() {
             @Override
             public void onClick(MovieAdapter.MovieViewHolder moviesViewHolder, Movie movie) {
-                Intent intent = new Intent(getContext(), DetailActivity.class);
-                intent.putExtra(AppConstants.MOVIE_DATA, movie);
-                startActivity(intent);
+                if(!multiPane) {
+                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra(AppConstants.MOVIE_DATA, movie);
+                    startActivity(intent);
+                }else{
+                    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+                    DetailFragment detailFragment = new DetailFragment();
+                    fragmentTransaction.add(R.id.fragment_content, detailFragment);
+                    fragmentTransaction.commit();
+                }
             }
         };
         movieList = new ArrayList<>();
