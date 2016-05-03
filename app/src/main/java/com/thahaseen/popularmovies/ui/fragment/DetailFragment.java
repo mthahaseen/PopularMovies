@@ -52,7 +52,7 @@ public class DetailFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, view);
         connectionDetector = new ConnectionDetector(getActivity());
-        movie = getActivity().getIntent().getParcelableExtra(AppConstants.MOVIE_DATA);
+        movie = getArguments().getParcelable(AppConstants.MOVIE_DATA);
         Picasso.with(getActivity())
                 .load(AppConstants.BASE_IMAGE_BACK_DROP_URL + movie.getBackdrop_path())
                 .into(imgMovieBackDrop);
@@ -94,24 +94,31 @@ public class DetailFragment extends Fragment{
     }
 
     public class PagerAdapter extends FragmentStatePagerAdapter {
+
         int mNumOfTabs;
+        Bundle args = new Bundle();
 
         public PagerAdapter(FragmentManager fm, int NumOfTabs) {
             super(fm);
             this.mNumOfTabs = NumOfTabs;
+            args.putParcelable(AppConstants.MOVIE_DATA, movie);
         }
 
         @Override
         public Fragment getItem(int position) {
+
             switch (position) {
                 case 0:
                     SummaryFragment tab1 = new SummaryFragment();
+                    tab1.setArguments(args);
                     return tab1;
                 case 1:
                     TrailerFragment tab2 = new TrailerFragment();
+                    tab2.setArguments(args);
                     return tab2;
                 case 2:
                     ReviewsFragment tab3 = new ReviewsFragment();
+                    tab3.setArguments(args);
                     return tab3;
                 default:
                     return null;

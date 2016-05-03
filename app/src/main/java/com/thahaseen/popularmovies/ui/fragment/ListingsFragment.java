@@ -83,7 +83,10 @@ public class ListingsFragment extends Fragment {
                 }else{
                     FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                     DetailFragment detailFragment = new DetailFragment();
-                    fragmentTransaction.add(R.id.fragment_content, detailFragment);
+                    Bundle args = new Bundle();
+                    args.putParcelable(AppConstants.MOVIE_DATA,movie);
+                    detailFragment.setArguments(args);
+                    fragmentTransaction.replace(R.id.fragment_content, detailFragment);
                     fragmentTransaction.commit();
                 }
             }
@@ -194,6 +197,15 @@ public class ListingsFragment extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
         movieAdapter = new MovieAdapter(getActivity(), movieList, movieOnClickHandler);
         recyclerView.setAdapter(movieAdapter);
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+        if(multiPane) {
+            DetailFragment detailFragment = new DetailFragment();
+            Bundle args = new Bundle();
+            args.putParcelable(AppConstants.MOVIE_DATA, movieList.get(0));
+            detailFragment.setArguments(args);
+            fragmentTransaction.replace(R.id.fragment_content, detailFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.thahaseen.popularmovies.R;
+import com.thahaseen.popularmovies.common.AppConstants;
 import com.thahaseen.popularmovies.ui.fragment.DetailFragment;
 
 public class DetailActivity extends AppCompatActivity {
@@ -19,10 +20,15 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        DetailFragment detailFragment = new DetailFragment();
-        fragmentTransaction.add(R.id.fragment_details, detailFragment);
-        fragmentTransaction.commit();
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            DetailFragment detailFragment = new DetailFragment();
+            Bundle args = new Bundle();
+            args.putParcelable(AppConstants.MOVIE_DATA, getIntent().getParcelableExtra(AppConstants.MOVIE_DATA));
+            detailFragment.setArguments(args);
+            fragmentTransaction.add(R.id.fragment_details, detailFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override

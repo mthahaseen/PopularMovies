@@ -34,7 +34,7 @@ public class SummaryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_summary, container, false);
         ButterKnife.bind(this, view);
         databaseHandler = new DatabaseHandler(getActivity());
-        final Movie  movie = getActivity().getIntent().getParcelableExtra(AppConstants.MOVIE_DATA);
+        final Movie movie = getArguments().getParcelable(AppConstants.MOVIE_DATA);
         txtMovieOverview.setText(movie.getOverview());
         txtMovieReleaseDate.setText("Release Date: " + movie.getRelease_date());
         txtMovieRating.setText(Double.toString(movie.getVote_average()));

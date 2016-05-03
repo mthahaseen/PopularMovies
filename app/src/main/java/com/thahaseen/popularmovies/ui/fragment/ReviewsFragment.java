@@ -55,7 +55,7 @@ public class ReviewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reviews, container, false);
         ButterKnife.bind(this, view);
         connectionDetector = new ConnectionDetector(getActivity());
-        Movie movie = getActivity().getIntent().getParcelableExtra(AppConstants.MOVIE_DATA);
+        final Movie movie = getArguments().getParcelable(AppConstants.MOVIE_DATA);
         if(connectionDetector.isConnectingToInternet()){
             getMovieReviews(movie.getId());
         }
