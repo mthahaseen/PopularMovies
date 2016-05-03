@@ -6,6 +6,6 @@ Libraries:
   - ButterKnife
   - Picasso
   - GSON
+  - RecyclerView & CardView
   
 Implemented recyclerview with grids to show movie list.
-Implemented collapsing toolbar in movie detail screen.
