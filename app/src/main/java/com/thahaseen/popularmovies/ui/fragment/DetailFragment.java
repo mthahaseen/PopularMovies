@@ -42,8 +42,6 @@ public class DetailFragment extends Fragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        /*if (!twoPane)
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(model.getOriginalTitle());*/
     }
 
     @Override
@@ -55,6 +53,8 @@ public class DetailFragment extends Fragment{
         movie = getArguments().getParcelable(AppConstants.MOVIE_DATA);
         Picasso.with(getActivity())
                 .load(AppConstants.BASE_IMAGE_BACK_DROP_URL + movie.getBackdrop_path())
+                .placeholder(R.drawable.movie_placeholder)
+                .error(R.drawable.movie_placeholder)
                 .into(imgMovieBackDrop);
         txtMovieTitle.setText(movie.getTitle());
         tabLayout.addTab(tabLayout.newTab().setText(AppConstants.TAB_SUMMARY));

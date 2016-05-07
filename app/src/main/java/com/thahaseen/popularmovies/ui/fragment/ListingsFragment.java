@@ -1,11 +1,13 @@
 package com.thahaseen.popularmovies.ui.fragment;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -81,13 +83,11 @@ public class ListingsFragment extends Fragment {
                     intent.putExtra(AppConstants.MOVIE_DATA, movie);
                     startActivity(intent);
                 }else{
-                    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                     DetailFragment detailFragment = new DetailFragment();
                     Bundle args = new Bundle();
-                    args.putParcelable(AppConstants.MOVIE_DATA,movie);
+                    args.putParcelable(AppConstants.MOVIE_DATA, movie);
                     detailFragment.setArguments(args);
-                    fragmentTransaction.replace(R.id.fragment_content, detailFragment);
-                    fragmentTransaction.commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, detailFragment).commit();
                 }
             }
         };
@@ -197,14 +197,12 @@ public class ListingsFragment extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
         movieAdapter = new MovieAdapter(getActivity(), movieList, movieOnClickHandler);
         recyclerView.setAdapter(movieAdapter);
-        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         if(multiPane) {
             DetailFragment detailFragment = new DetailFragment();
             Bundle args = new Bundle();
             args.putParcelable(AppConstants.MOVIE_DATA, movieList.get(0));
             detailFragment.setArguments(args);
-            fragmentTransaction.replace(R.id.fragment_content, detailFragment);
-            fragmentTransaction.commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, detailFragment).commit();
         }
     }
 
@@ -212,5 +210,17 @@ public class ListingsFragment extends Fragment {
     public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
         state.putParcelableArrayList(AppConstants.MOVIE_DATA, movieList);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(multiPane && newConfig.ORIENTATION_LANDSCAPE == Configuration.ORIENTATION_LANDSCAPE){
+            DetailFragment detailFragment = new DetailFragment();
+            Bundle args = new Bundle();
+            args.putParcelable(AppConstants.MOVIE_DATA, movieList.get(0));
+            detailFragment.setArguments(args);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, detailFragment).commit();
+        }
     }
 }
