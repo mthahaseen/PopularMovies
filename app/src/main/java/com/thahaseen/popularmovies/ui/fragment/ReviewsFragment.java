@@ -35,7 +35,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -43,8 +43,8 @@ import butterknife.ButterKnife;
  */
 public class ReviewsFragment extends Fragment {
 
-    @Bind(R.id.recycler_view_reviews) RecyclerView recycler_view_reviews;
-    @Bind(R.id.lblNoReviews) TextView lblNoReviews;
+    @BindView(R.id.recycler_view_reviews) RecyclerView recycler_view_reviews;
+    @BindView(R.id.lblNoReviews) TextView lblNoReviews;
     ConnectionDetector connectionDetector;
     ArrayList<Review> lstReviews = new ArrayList<>();
     MovieReviewAdapter movieReviewAdapter;

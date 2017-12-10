@@ -5,18 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.thahaseen.popularmovies.R;
-import com.thahaseen.popularmovies.common.AppConstants;
 import com.thahaseen.popularmovies.data.entities.Review;
-import com.thahaseen.popularmovies.data.entities.Trailer;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -52,8 +48,8 @@ public class MovieReviewAdapter extends RecyclerView.Adapter<MovieReviewAdapter.
 
     public class ReviewViewHolder extends RecyclerView.ViewHolder{
 
-        @Bind(R.id.txtAuthor) TextView txtAuthor;
-        @Bind(R.id.txtReview) TextView txtReview;
+        @BindView(R.id.txtAuthor) TextView txtAuthor;
+        @BindView(R.id.txtReview) TextView txtReview;
 
         public ReviewViewHolder(View view) {
             super(view);

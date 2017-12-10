@@ -24,7 +24,7 @@ import com.thahaseen.popularmovies.data.entities.Trailer;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -32,10 +32,10 @@ import butterknife.ButterKnife;
  */
 public class DetailFragment extends Fragment{
 
-    @Bind(R.id.imgMovieImage) ImageView imgMovieBackDrop;
-    @Bind(R.id.txtMovieTitle) TextView txtMovieTitle;
-    @Bind(R.id.DetailViewPager) ViewPager detailViewPager;
-    @Bind(R.id.detail_tab_layout) TabLayout tabLayout;
+    @BindView(R.id.imgMovieImage) ImageView imgMovieBackDrop;
+    @BindView(R.id.txtMovieTitle) TextView txtMovieTitle;
+    @BindView(R.id.DetailViewPager) ViewPager detailViewPager;
+    @BindView(R.id.detail_tab_layout) TabLayout tabLayout;
     ConnectionDetector connectionDetector;
     private Movie movie;
 

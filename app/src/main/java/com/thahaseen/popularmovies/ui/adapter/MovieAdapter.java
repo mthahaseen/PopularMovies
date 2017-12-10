@@ -13,9 +13,8 @@ import com.thahaseen.popularmovies.common.AppConstants;
 import com.thahaseen.popularmovies.data.entities.Movie;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -61,7 +60,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.imgMoviePoster) ImageView imgPoster;
+        @BindView(R.id.imgMoviePoster) ImageView imgPoster;
 
         public MovieViewHolder(View view) {
             super(view);

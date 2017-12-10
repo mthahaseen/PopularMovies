@@ -14,7 +14,7 @@ import com.thahaseen.popularmovies.common.AppConstants;
 import com.thahaseen.popularmovies.data.db.DatabaseHandler;
 import com.thahaseen.popularmovies.data.entities.Movie;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -22,10 +22,10 @@ import butterknife.ButterKnife;
  */
 public class SummaryFragment extends Fragment {
 
-    @Bind(R.id.txtMovieOverview) TextView txtMovieOverview;
-    @Bind(R.id.txtMovieReleaseDate) TextView txtMovieReleaseDate;
-    @Bind(R.id.txtMovieRating) TextView txtMovieRating;
-    @Bind(R.id.imgFav) ImageView imgFav;
+    @BindView(R.id.txtMovieOverview) TextView txtMovieOverview;
+    @BindView(R.id.txtMovieReleaseDate) TextView txtMovieReleaseDate;
+    @BindView(R.id.txtMovieRating) TextView txtMovieRating;
+    @BindView(R.id.imgFav) ImageView imgFav;
     private DatabaseHandler databaseHandler;
 
     @Override

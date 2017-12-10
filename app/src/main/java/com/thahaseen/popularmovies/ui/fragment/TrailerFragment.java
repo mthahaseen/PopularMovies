@@ -33,7 +33,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -41,7 +41,7 @@ import butterknife.ButterKnife;
  */
 public class TrailerFragment extends Fragment implements MovieTrailerAdapter.TrailerOnClickHandler{
 
-    @Bind(R.id.recycler_view_trailers) RecyclerView recycler_view_trailers;
+    @BindView(R.id.recycler_view_trailers) RecyclerView recycler_view_trailers;
     MovieTrailerAdapter movieTrailerAdapter;
     ArrayList<Trailer> lstTrailer = new ArrayList<>();
     ConnectionDetector connectionDetector;

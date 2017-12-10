@@ -40,7 +40,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -48,7 +48,7 @@ import butterknife.ButterKnife;
  */
 public class ListingsFragment extends Fragment {
 
-    @Bind(R.id.recycler_view_listings) RecyclerView recyclerView;
+    @BindView(R.id.recycler_view_listings) RecyclerView recyclerView;
 
     private static final String TAG = ListingsFragment.class.getSimpleName();
     private ArrayList<Movie> movieList;

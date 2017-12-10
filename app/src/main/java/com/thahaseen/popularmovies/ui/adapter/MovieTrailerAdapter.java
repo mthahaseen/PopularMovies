@@ -15,7 +15,7 @@ import com.thahaseen.popularmovies.data.entities.Trailer;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -60,8 +60,8 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
 
     public class TrailerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.imgVideoThumbnail) ImageView imgVideoThumbnail;
-        @Bind(R.id.txtVideoName) TextView txtVideoName;
+        @BindView(R.id.imgVideoThumbnail) ImageView imgVideoThumbnail;
+        @BindView(R.id.txtVideoName) TextView txtVideoName;
 
         public TrailerViewHolder(View view) {
             super(view);
